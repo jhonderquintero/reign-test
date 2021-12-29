@@ -3,12 +3,15 @@ import ReactDOM from "react-dom"
 import reportWebVitals from "./reportWebVitals"
 import { BrowserRouter } from "react-router-dom"
 import { RootNavigator } from "./navigation"
+import { ThemeContextProvider } from "./context/ThemeContext"
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <RootNavigator />
-    </BrowserRouter>
+    <ThemeContextProvider>
+      <BrowserRouter>
+        <RootNavigator />
+      </BrowserRouter>
+    </ThemeContextProvider>
   </React.StrictMode>,
   document.getElementById("root")
 )
