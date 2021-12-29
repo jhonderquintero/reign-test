@@ -265,7 +265,7 @@ export const choices = {
       full: 9999,
     },
   },
-}
+};
 
 export const decisions = {
   fonts: {
@@ -310,7 +310,7 @@ export const decisions = {
       },
     },
   },
-}
+};
 
 // export const decisions = {
 //   // fonts
