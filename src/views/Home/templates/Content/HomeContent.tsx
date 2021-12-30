@@ -7,10 +7,10 @@ export const HomeContent: React.FC<IHomeContent> = ({
   Footer,
 }) => {
   return (
-    <div className="home">
-      <div className="home__header">{Header}</div>
-      <div className="home__central-content">{CentralContent}</div>
-      <div className="home__footer">{Footer}</div>
+    <div className="content">
+      <div className="content__header">{Header}</div>
+      <div className="content__central-content">{CentralContent}</div>
+      <div className="content__footer">{Footer}</div>
     </div>
   );
 };
