@@ -1,35 +1,43 @@
-import { useThemeContext } from "./../../context/ThemeContext";
-import React, { useState } from "react";
-import { HomeContent } from "./templates/Content/HomeContent";
-import { useLocalStorageState } from "../../hooks/useLocalStorageState";
-import { HomeHeader } from "./templates/Header/HomeHeader";
+/* eslint-disable react-hooks/exhaustive-deps */
 import { HeaderTitle } from "../../atomic/atoms/HeaderTitle/HeaderTitle";
+import { HomeContent } from "./templates/Content/HomeContent";
+import { HomeHeader } from "./templates/Header/HomeHeader";
 import { TabSelector } from "../../atomic/molecules/TabSelector/TabSelector";
+import { useLocalStorageState } from "../../hooks/useLocalStorageState";
+import React, { useEffect } from "react";
+import { IHomeTabs, tabs, Tabs } from "./definitions";
 
-export type homeTabs = "All" | "My faves";
+export function selectTabComponent(tabName: IHomeTabs) {
+  const selectedTab: Tabs[] = tabs.filter((obj) => {
+    return obj.tabName === tabName;
+  });
+  return selectedTab[0];
+}
 
 export const Home: React.FC = (): JSX.Element => {
-  const tabs: homeTabs[] = ["All", "My faves"];
-  const [tabSelected, setTabSelected] = useState<homeTabs>(tabs[0]);
+  const [tabSelected, setTabSelected] = useLocalStorageState<Tabs>(
+    "selected-tab",
+    tabs[0]
+  );
 
-  const [selectedFilter, setSelecterFilter, removeSelectedFilter] =
-    useLocalStorageState("selected-filter", "0");
-
-  const [favoritePosts, setFavoritePosts, removeFavoritePosts] =
-    useLocalStorageState("favorite-posts");
-
-  const { decisions, choices } = useThemeContext();
-
-  function handleTabSelection(newTab: homeTabs) {
+  function handleTabSelection(newTab: Tabs) {
     setTabSelected(newTab);
   }
+
+  const ActualTab = selectTabComponent(tabSelected.tabName).component;
 
   return (
     <div>
       <HomeHeader LeftElement={<HeaderTitle text="Hacker News" />} />
       <HomeContent
-        Header={<TabSelector tabs={tabs} actualTab={tabSelected} tabSetter={handleTabSelection}/>}
-        CentralContent={<div>Central Content</div>}
+        Header={
+          <TabSelector
+            tabs={tabs}
+            actualTab={tabSelected}
+            tabSetter={handleTabSelection}
+          />
+        }
+        CentralContent={<ActualTab />}
       />
     </div>
   );

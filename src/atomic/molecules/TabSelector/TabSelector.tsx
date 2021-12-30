@@ -2,31 +2,33 @@ import { TabButton } from "../../atoms/TabButton/TabButton";
 import React, { MouseEvent, MouseEventHandler, SyntheticEvent } from "react";
 import { ITabSelector } from "./definitions";
 import "./styles.css";
-import { homeTabs } from "views/Home/Home";
+import { IHomeTabs, Tabs } from "../../../views/Home/definitions";
+import { selectTabComponent } from "../../../views/Home/Home";
 
 export const TabSelector: React.FC<ITabSelector> = ({
   tabs,
   actualTab,
   tabSetter,
 }): JSX.Element => {
-  const handleSelection = (e: MouseEvent<HTMLButtonElement>) => {
+  const handleTabSelection = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const button = e.target as HTMLButtonElement;
-    tabSetter(button.innerHTML);
+    const buttonText = button.innerText as IHomeTabs;
+    tabSetter(selectTabComponent(buttonText));
   };
 
   return (
     <div className="tab-selector">
       <form>
-        {tabs.map((tabName: homeTabs | string) => {
-          const isTabSelected: boolean = tabName === actualTab;
+        {tabs.map((tab: Tabs) => {
+          const isTabSelected: boolean = tab.tabName === actualTab.tabName;
           return (
             <TabButton
-              key={tabName}
+              key={tab.tabName}
               selected={isTabSelected}
-              onClick={handleSelection}
+              onClick={handleTabSelection}
             >
-              {tabName}
+              {tab.tabName}
             </TabButton>
           );
         })}

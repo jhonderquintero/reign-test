@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Type } from "typescript";
 
 const isBrowser = typeof window !== "undefined";
 const noop = () => {};
@@ -11,11 +12,11 @@ const noop = () => {};
  * @returns [state, setState]
  */
 
-export const useLocalStorageState = (
+export function useLocalStorageState<T> (
   key: string,
   defaultValue: object | string | Function = "",
   { serialize = JSON.stringify, deserialize = JSON.parse }: parseOptions = {}
-): StorageStateValue => {
+): StorageStateValue {
   if (!key) {
     throw new Error("useLocalStorage key may not be null or falsy");
   }
@@ -25,7 +26,7 @@ export const useLocalStorageState = (
   }
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [state, setState] = React.useState<string | null>(() =>
+  const [state, setState] = React.useState<T | null>(() =>
     window.localStorage.getItem(key)
       ? deserialize(window.localStorage.getItem(key))
       : typeof defaultValue === "function"
@@ -57,7 +58,7 @@ interface parseOptions {
 }
 
 type StorageStateValue = [
-  state: string | null | Function | object,
-  setState: React.Dispatch<React.SetStateAction<string | null>>,
+  state: string | null | Function | object | any,
+  setState: React.Dispatch<React.SetStateAction<any | null>>,
   remove: () => void
 ];

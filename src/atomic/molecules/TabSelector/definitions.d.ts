@@ -1,7 +1,7 @@
-import { homeTabs } from "../../../views/Home/Home";
+import { Tabs } from "../../../views/Home/definitions";
 
 export interface ITabSelector {
-  tabs: string[];
-  actualTab: homeTabs;
+  tabs: Tabs[];
+  actualTab: Tabs;
   tabSetter: Function;
 }
