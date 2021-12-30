@@ -6,13 +6,7 @@ import { TabSelector } from "../../atomic/molecules/TabSelector/TabSelector";
 import { useLocalStorageState } from "../../hooks/useLocalStorageState";
 import React, { useEffect } from "react";
 import { IHomeTabs, tabs, Tabs } from "./definitions";
-
-export function selectTabComponent(tabName: IHomeTabs) {
-  const selectedTab: Tabs[] = tabs.filter((obj) => {
-    return obj.tabName === tabName;
-  });
-  return selectedTab[0];
-}
+import { selectTabComponent } from "../../helpers/selectTabComponent";
 
 export const Home: React.FC = (): JSX.Element => {
   const [tabSelected, setTabSelected] = useLocalStorageState<Tabs>(

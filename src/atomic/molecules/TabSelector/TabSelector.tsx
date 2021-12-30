@@ -1,9 +1,9 @@
 import { TabButton } from "../../atoms/TabButton/TabButton";
-import React, { MouseEvent, MouseEventHandler, SyntheticEvent } from "react";
+import React, { MouseEvent } from "react";
 import { ITabSelector } from "./definitions";
 import "./styles.css";
 import { IHomeTabs, Tabs } from "../../../views/Home/definitions";
-import { selectTabComponent } from "../../../views/Home/Home";
+import { selectTabComponent } from "../../../helpers/selectTabComponent";
 
 export const TabSelector: React.FC<ITabSelector> = ({
   tabs,
