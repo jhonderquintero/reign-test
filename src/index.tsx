@@ -4,6 +4,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { RootNavigator } from "./navigation";
 import { ThemeContextProvider } from "./context/ThemeContext";
+import "./styles/normalize.css";
 
 ReactDOM.render(
   <React.StrictMode>

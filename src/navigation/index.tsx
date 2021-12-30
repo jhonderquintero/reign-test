@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-export const RootNavigator = () => {
+export const RootNavigator: React.FC = (): JSX.Element => {
   const location = useLocation();
 
   useEffect(() => {

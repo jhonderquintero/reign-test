@@ -15,7 +15,7 @@ export const useLocalStorageState = (
   key: string,
   defaultValue: object | string | Function = "",
   { serialize = JSON.stringify, deserialize = JSON.parse }: parseOptions = {}
-) => {
+): StorageStateValue => {
   if (!key) {
     throw new Error("useLocalStorage key may not be null or falsy");
   }
@@ -25,7 +25,7 @@ export const useLocalStorageState = (
   }
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [state, setState] = React.useState(() =>
+  const [state, setState] = React.useState<string | null>(() =>
     window.localStorage.getItem(key)
       ? deserialize(window.localStorage.getItem(key))
       : typeof defaultValue === "function"
@@ -55,3 +55,9 @@ interface parseOptions {
   serialize?: Function;
   deserialize?: Function;
 }
+
+type StorageStateValue = [
+  state: string | null | Function | object,
+  setState: React.Dispatch<React.SetStateAction<string | null>>,
+  remove: () => void
+];
