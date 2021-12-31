@@ -4,10 +4,13 @@ import "./styles.css";
 
 export const DropDownListButton: React.FC<IDropDownListButton> = ({
   text,
+  ...props
 }): JSX.Element => {
   return (
     <li>
-      <button className="dropdown-button">{text}</button>
+      <button className="dropdown-button" {...props}>
+        {text}
+      </button>
     </li>
   );
 };

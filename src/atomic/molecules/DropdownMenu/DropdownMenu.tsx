@@ -4,7 +4,7 @@ import { useState } from "react";
 import "./styles.css";
 
 export const DropdownMenu = () => {
-  const [isVisible, setIsVisible] = useState<boolean>(true);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
 
   const handleClick = () => {
     setIsVisible(!isVisible);
@@ -20,9 +20,9 @@ export const DropdownMenu = () => {
         className="dropdown__list"
         style={{ visibility: isVisible ? "visible" : "hidden" }}
       >
-        <DropDownListButton text="Angular" />
-        <DropDownListButton text="Reactjs" />
-        <DropDownListButton text="Vuejs" />
+        <DropDownListButton text="Angular" onClick={handleClick} />
+        <DropDownListButton text="Reactjs" onClick={handleClick} />
+        <DropDownListButton text="Vuejs" onClick={handleClick} />
       </ul>
     </nav>
   );
