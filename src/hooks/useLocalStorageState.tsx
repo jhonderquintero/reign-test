@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Type } from "typescript";
 
 const isBrowser = typeof window !== "undefined";
 const noop = () => {};

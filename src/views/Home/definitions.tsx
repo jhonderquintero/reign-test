@@ -1,3 +1,6 @@
+import { HomeAllCards } from "../../atomic/organisms/HomeAllCards/HomeAllCards";
+import { HomeFavoritesCards } from "../../atomic/organisms/HomeFavoritesCards/HomeFavoritesCards";
+
 export type IHomeTabs = "All" | "My faves";
 export const homeTabs: IHomeTabs[] = ["All", "My faves"];
 
@@ -6,16 +9,13 @@ export interface Tabs {
   tabName: IHomeTabs;
 }
 
-export const HomeAllTab = () => <div>All Tab</div>;
-export const HomeFavoritesTab = () => <div>Favorites Tab</div>;
-
 export const tabs: Tabs[] = [
   {
-    component: HomeAllTab,
+    component: HomeAllCards,
     tabName: homeTabs[0],
   },
   {
-    component: HomeFavoritesTab,
+    component: HomeFavoritesCards,
     tabName: homeTabs[1],
   },
 ];

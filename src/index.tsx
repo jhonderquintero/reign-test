@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import { RootNavigator } from "./navigation";
 import { ThemeContextProvider } from "./context/ThemeContext";
 import "./styles/normalize.css";
+import "./styles/fonts.css"
 
 ReactDOM.render(
   <React.StrictMode>
