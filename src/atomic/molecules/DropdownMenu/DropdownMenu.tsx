@@ -11,7 +11,7 @@ export const DropdownMenu = () => {
   };
 
   return (
-    <nav role="navigation" className="dropdown" id="nav">
+    <nav role="navigation" className=" dropdown" id="nav">
       <div className="dropdown__header" onClick={handleClick}>
         <p className="dropdown__header__text">Select your news</p>
         <DownArrowSVG width="20px" height="14px" />
