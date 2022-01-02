@@ -2,6 +2,7 @@ import { Card, ICard } from "../../../atomic/atoms/Card/Card";
 import { FavoriteIconSelectedSVG } from "../../../atomic/atoms/Icons/FavoriteIconSelectedSVG";
 import { FavoriteIconSVG } from "../../../atomic/atoms/Icons/FavoriteIconSVG";
 import React, { useEffect, useState } from "react";
+import { dropdownStates } from "atomic/organisms/HomeAllCards/HomeAllCards";
 
 export const InfoCard: React.FC<IInfoCard> = ({
   localStorageSetter,
@@ -10,6 +11,8 @@ export const InfoCard: React.FC<IInfoCard> = ({
   headerText,
   storyUrl,
   id,
+  query,
+  selectedDropdown,
   ...props
 }) => {
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
@@ -19,7 +22,7 @@ export const InfoCard: React.FC<IInfoCard> = ({
 
   useEffect(() => {
     for (const post of prevLocalStorageState) {
-      if (post.id === id) {
+      if (post.id === id && selectedDropdown === query) {
         setIsFavorite(true);
       }
     }
@@ -28,15 +31,22 @@ export const InfoCard: React.FC<IInfoCard> = ({
 
   useEffect(() => {
     if (isFavorite) {
-      localStorageSetter([
-        ...prevLocalStorageState,
-        {
-          centralText,
-          headerText,
-          storyUrl,
-          id,
-        },
-      ]);
+      const arr = prevLocalStorageState.filter((post) => {
+        return post.id === id;
+      });
+
+      if (arr.length === 0) {
+        localStorageSetter([
+          ...prevLocalStorageState,
+          {
+            centralText,
+            headerText,
+            storyUrl,
+            id,
+            query,
+          },
+        ]);
+      }
     }
     if (!isFavorite) {
       localStorageSetter(
@@ -64,4 +74,6 @@ interface IInfoCard extends ICard {
   prevLocalStorageState: any[];
   storyUrl: string;
   id: string;
+  query: string;
+  selectedDropdown: dropdownStates;
 }

@@ -3,8 +3,25 @@ import { DropDownListButton } from "../../../atomic/atoms/DropDownListButton/Dro
 import { useState } from "react";
 import "./styles.css";
 
-export const DropdownMenu = () => {
+export const DropdownMenu: React.FC<IDropDownMenu> = ({
+  dropDownStateSetter,
+}) => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
+
+  const handleAngularClick = () => {
+    setIsVisible(!isVisible);
+    dropDownStateSetter("angular");
+  };
+
+  const handleReactClick = () => {
+    setIsVisible(!isVisible);
+    dropDownStateSetter("reactjs");
+  };
+
+  const handleVueClick = () => {
+    setIsVisible(!isVisible);
+    dropDownStateSetter("vuejs");
+  };
 
   const handleClick = () => {
     setIsVisible(!isVisible);
@@ -20,10 +37,14 @@ export const DropdownMenu = () => {
         className="dropdown__list"
         style={{ visibility: isVisible ? "visible" : "hidden" }}
       >
-        <DropDownListButton text="Angular" onClick={handleClick} />
-        <DropDownListButton text="Reactjs" onClick={handleClick} />
-        <DropDownListButton text="Vuejs" onClick={handleClick} />
+        <DropDownListButton text="Angular" onClick={handleAngularClick} />
+        <DropDownListButton text="Reactjs" onClick={handleReactClick} />
+        <DropDownListButton text="Vuejs" onClick={handleVueClick} />
       </ul>
     </nav>
   );
 };
+
+interface IDropDownMenu {
+  dropDownStateSetter: Function;
+}
