@@ -1,7 +1,7 @@
 .card {
   background-color: #fff;
   border-radius: 6px;
-  border: solid 1px #979797;
+  border: solid 1.9px #979797;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -25,6 +25,7 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   padding: 0px 12px;
+  opacity: 0.8;
 }
 
 .card__right div {
@@ -40,6 +41,7 @@
   padding: 10px 20px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .card__left__header {

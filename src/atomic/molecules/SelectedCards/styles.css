@@ -1,7 +1,6 @@
-.favorite-cards__wrapper {
+.card__wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 30px;
   column-gap: 40px;
-  margin-top: 100px;
 }

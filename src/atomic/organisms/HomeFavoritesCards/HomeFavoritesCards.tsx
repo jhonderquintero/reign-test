@@ -1,10 +1,34 @@
-import React from 'react'
-import "./styles.css"
+import { useLocalStorageState } from "../../../hooks/useLocalStorageState";
+import "./styles.css";
+import { Card } from "../../../atomic/atoms/Card/Card";
+import { FavoriteIconSelectedSVG } from "../../../atomic/atoms/Icons/FavoriteIconSelectedSVG";
+import { TimeSVG } from "../../../atomic/atoms/Icons/TimeSVG";
 
 export const HomeFavoritesCards = () => {
+  const [favoritePosts, setFavoritePosts] = useLocalStorageState(
+    "favorite-posts",
+    []
+  );
+
   return (
-    <div>
-      Home Favorites Cards
+    <div className="favorite-cards__wrapper">
+      {favoritePosts?.map(({ centralText, headerText, id, createdAt }: any) => {
+        return (
+          <Card
+            headerIcon={<TimeSVG />}
+            rightIcon={<FavoriteIconSelectedSVG />}
+            clickHandler={() => {
+              setFavoritePosts(
+                favoritePosts.filter((post: any) => {
+                  return post.createdAt !== createdAt;
+                })
+              );
+            }}
+            centralText={centralText}
+            headerText={headerText}
+          />
+        );
+      })}
     </div>
-  )
-}
+  );
+};

@@ -13,37 +13,40 @@ export const InfoCard: React.FC<IInfoCard> = ({
   id,
   query,
   selectedDropdown,
+  createdAt,
   ...props
 }) => {
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
+
   const handleClick = () => {
     setIsFavorite(!isFavorite);
   };
 
   useEffect(() => {
     for (const post of prevLocalStorageState) {
-      if (post.id === id && selectedDropdown === query) {
+      if (createdAt === post.createdAt) {
         setIsFavorite(true);
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     if (isFavorite) {
       const arr = prevLocalStorageState.filter((post) => {
-        return post.id === id;
+        return post.createdAt === createdAt && post.id === id;
       });
 
       if (arr.length === 0) {
         localStorageSetter([
           ...prevLocalStorageState,
           {
-            centralText,
-            headerText,
-            storyUrl,
             id,
             query,
+            createdAt,
+            headerText,
+            centralText,
+            storyUrl,
           },
         ]);
       }
@@ -51,12 +54,12 @@ export const InfoCard: React.FC<IInfoCard> = ({
     if (!isFavorite) {
       localStorageSetter(
         prevLocalStorageState.filter((post: any) => {
-          return post.id !== id;
+          return post.createdAt !== createdAt;
         })
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [centralText, headerText, isFavorite, localStorageSetter, storyUrl]);
+  }, [isFavorite]);
 
   return (
     <Card
@@ -65,6 +68,7 @@ export const InfoCard: React.FC<IInfoCard> = ({
       clickHandler={handleClick}
       centralText={centralText}
       headerText={headerText}
+      key={createdAt}
     />
   );
 };
@@ -76,4 +80,5 @@ interface IInfoCard extends ICard {
   id: string;
   query: string;
   selectedDropdown: dropdownStates;
+  createdAt: string;
 }

@@ -20,7 +20,7 @@ export const Card: React.FC<ICard> = ({
         </div>
         <div className="card__left__content">
           {centralText.length > 149
-            ? parse(centralText.slice(0, 150) + "...")
+            ? parse(centralText.split("\n")[0].slice(0, 100) + "...")
             : parse(centralText)}
         </div>
       </div>

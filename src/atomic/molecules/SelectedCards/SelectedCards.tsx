@@ -5,6 +5,7 @@ import { useQuery } from "react-query";
 import { reactQueryHOC } from "../../../helpers/reactQueryHOC";
 import { InfoCard } from "../InfoCard/InfoCard";
 import { useSearchParams } from "react-router-dom";
+import "./styles.css";
 
 export const SelectedCards = reactQueryHOC(
   ({ favoritePosts, setFavoritePosts, selectedDropdown, queryClient }: any) => {
@@ -36,7 +37,7 @@ export const SelectedCards = reactQueryHOC(
       <div style={{ marginTop: 30 }}>
         {status === "success" && (
           <div>
-            <div>
+            <div className="card__wrapper">
               {data.hits.map(
                 ({
                   story_title,
@@ -53,8 +54,10 @@ export const SelectedCards = reactQueryHOC(
                   ) {
                     return null;
                   } else {
+
                     return (
                       <InfoCard
+                        createdAt={created_at}
                         prevLocalStorageState={favoritePosts}
                         headerText={story_title}
                         centralText={comment_text}
@@ -64,6 +67,7 @@ export const SelectedCards = reactQueryHOC(
                         id={story_id}
                         query={data.query}
                         selectedDropdown={selectedDropdown}
+                        key={created_at}
                       />
                     );
                   }
