@@ -2,6 +2,9 @@ import { DownArrowSVG } from "../../../atomic/atoms/Icons/DownArrowSVG";
 import { DropDownListButton } from "../../../atomic/atoms/DropDownListButton/DropDownListButton";
 import { useState } from "react";
 import "./styles.css";
+import { VueSVG } from "../../../atomic/atoms/Icons/VueSVG";
+import { AngularSVG } from "../../../atomic/atoms/Icons/AngularSVG";
+import { ReactSVG } from "../../../atomic/atoms/Icons/ReactSVG";
 
 export const DropdownMenu: React.FC<IDropDownMenu> = ({
   dropDownStateSetter,
@@ -37,9 +40,21 @@ export const DropdownMenu: React.FC<IDropDownMenu> = ({
         className="dropdown__list"
         style={{ visibility: isVisible ? "visible" : "hidden" }}
       >
-        <DropDownListButton text="Angular" onClick={handleAngularClick} />
-        <DropDownListButton text="Reactjs" onClick={handleReactClick} />
-        <DropDownListButton text="Vuejs" onClick={handleVueClick} />
+        <DropDownListButton
+          text="Angular"
+          onClick={handleAngularClick}
+          icon={<AngularSVG height="22px" width="20px" />}
+        />
+        <DropDownListButton
+          text="Reactjs"
+          onClick={handleReactClick}
+          icon={<ReactSVG height="22px" width="20px" />}
+        />
+        <DropDownListButton
+          text="Vuejs"
+          onClick={handleVueClick}
+          icon={<VueSVG height="22px" width="20px" />}
+        />
       </ul>
     </nav>
   );

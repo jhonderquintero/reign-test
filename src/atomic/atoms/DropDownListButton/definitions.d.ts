@@ -4,4 +4,5 @@ export interface IDropDownListButton
     HTMLButtonElement
   > {
   text: string;
+  icon: JSX.Element;
 }
