@@ -1,5 +1,5 @@
 .header-title {
-  width: auto;
+  display: inline-block;
 }
 
 .header-title__text{
