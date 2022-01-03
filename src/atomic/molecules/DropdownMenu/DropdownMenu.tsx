@@ -5,6 +5,7 @@ import "./styles.css";
 import { VueSVG } from "../../../atomic/atoms/Icons/VueSVG";
 import { AngularSVG } from "../../../atomic/atoms/Icons/AngularSVG";
 import { ReactSVG } from "../../../atomic/atoms/Icons/ReactSVG";
+import { IDropDownMenu } from "./definitions";
 
 export const DropdownMenu: React.FC<IDropDownMenu> = ({
   dropDownStateSetter,
@@ -59,7 +60,3 @@ export const DropdownMenu: React.FC<IDropDownMenu> = ({
     </nav>
   );
 };
-
-interface IDropDownMenu {
-  dropDownStateSetter: Function;
-}

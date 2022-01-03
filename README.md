@@ -1,6 +1,67 @@
-# Getting Started with Create React App
+Deployed version (CD with Netflify): https://ecstatic-chandrasekhar-61cafc.netlify.app/
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Applied Design Patterns
+
+### Atomic Design
+
+Atomic design is methodology for creating design systems.
+All elements are is atoms, molecules, organisms, templates, and pages concurrently working \
+together to create effective interface design systems.
+
+There are five distinct stages of the Atomic Design methodology, with the first three modelled after their equivalents in the Chemistry world. Each stage builds on the previous, acting as an aggregate of items from the preceding stages.
+
+Atoms
+Molecules
+Organisms
+Templates
+Pages
+
+In this folder structure we defined Atoms, Molecules and Organisms in "src/atomic" folder \
+and Templates and Pages in "src/views"
+
+https://bradfrost.com/blog/post/atomic-web-design/
+
+### Improve React Performance
+
+Design pattern recommended by Kent C. Dodds (Google Expert and creator of React Testing Library)
+(This design patterns is applied in Atomic templates)
+
+https://epicreact.dev/one-react-mistake-thats-slowing-you-down/
+
+### Design Tokens for future usage of Design System (Scalability)
+
+https://spectrum.adobe.com/page/design-tokens/
+
+## Packages and Libraries
+
+### react-router-dom
+
+Enables you to implement dynamic routing in a web app.
+
+https://reactrouter.com/
+
+### react-query
+
+This library make possible fetching, caching, synchronising and updating server state in React applications.
+(Incredible speed performance of react-applications)
+
+https://react-query.tanstack.com/
+
+### date-fns
+
+Toolset for manipulating JavaScript dates in a browser & Node.js.
+
+https://date-fns.org/
+
+### animate.css
+
+This is a library of ready-to-use, cross-browser animations for use in your web projects. Great for emphasis, home pages, sliders, and attention-guiding hints.
+
+https://animate.style/
+
+### react-lottie
+
+Allows implement lottie files in React
 
 ## Available Scripts
 
@@ -14,11 +75,6 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
@@ -29,18 +85,48 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### `npm run prettier-check`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+This command checks that files are already formatted with prettier, rather than overwriting them
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `npm run prettier-fix`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+This command format and overwritte all files with prettier styles.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Folder Structure
 
-## Learn More
+Main folder: src
+Package Manager: npm
+React/Typescript
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### helpers
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+In this folders are all functions that work as helpers for some actions.
+
+### context
+
+All context created with React.context are in this folders.
+
+### hooks
+
+Customs hooks
+
+### navigation
+
+Routes and navigations created with react-router-dom
+
+### assets
+
+Images, assets and lottie files
+
+### views
+
+Atomic Pages and Templates
+
+### atomic
+
+Atomic Atoms, Molecules and Organisms
+
+### styles
+
+All global styles applied in the code.

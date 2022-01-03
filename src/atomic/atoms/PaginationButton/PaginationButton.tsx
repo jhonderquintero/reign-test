@@ -1,4 +1,5 @@
 import React from "react";
+import { IPaginationButton } from "./definitions";
 import "./styles.css";
 
 export const PaginationButton: React.FC<IPaginationButton> = ({
@@ -6,9 +7,3 @@ export const PaginationButton: React.FC<IPaginationButton> = ({
 }): JSX.Element => {
   return <button className="pagination-button" {...props} />;
 };
-
-interface IPaginationButton
-  extends React.DetailedHTMLProps<
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  > {}

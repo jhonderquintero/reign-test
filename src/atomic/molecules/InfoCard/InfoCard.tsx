@@ -1,8 +1,8 @@
-import { Card, ICard } from "../../../atomic/atoms/Card/Card";
+import { Card } from "../../../atomic/atoms/Card/Card";
 import { FavoriteIconSelectedSVG } from "../../../atomic/atoms/Icons/FavoriteIconSelectedSVG";
 import { FavoriteIconSVG } from "../../../atomic/atoms/Icons/FavoriteIconSVG";
 import React, { useEffect, useState } from "react";
-import { dropdownStates } from "atomic/organisms/HomeAllCards/HomeAllCards";
+import { IInfoCard } from "./definitions";
 
 export const InfoCard: React.FC<IInfoCard> = ({
   localStorageSetter,
@@ -73,13 +73,3 @@ export const InfoCard: React.FC<IInfoCard> = ({
     />
   );
 };
-
-interface IInfoCard extends ICard {
-  localStorageSetter: Function;
-  prevLocalStorageState: any[];
-  storyUrl: string;
-  id: string;
-  query: string;
-  selectedDropdown: dropdownStates;
-  createdAt: string;
-}

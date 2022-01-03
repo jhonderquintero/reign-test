@@ -1,4 +1,5 @@
 import React from "react";
+import { ITabButton } from "./definitions";
 import "./styles.css";
 
 export const TabButton: React.FC<ITabButton> = ({
@@ -15,11 +16,3 @@ export const TabButton: React.FC<ITabButton> = ({
     </button>
   );
 };
-
-interface ITabButton
-  extends React.DetailedHTMLProps<
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  > {
-  selected: boolean;
-}

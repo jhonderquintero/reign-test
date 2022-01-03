@@ -4,7 +4,7 @@ import { HomeHeader } from "../../views/Home/templates/Header/HomeHeader";
 import "./styles.css";
 import { NotFoundLottie } from "../../atomic/atoms/Lotties/NotFoundLottie";
 
-export const NotFound = () => {
+export const NotFound: React.FC = (): JSX.Element => {
   return (
     <div>
       <HomeHeader LeftElement={<HeaderTitle text="Hacker News" />} />

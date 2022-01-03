@@ -1,6 +1,7 @@
 import { PaginationButton } from "../../../atomic/atoms/PaginationButton/PaginationButton";
 import React, { useEffect, useRef } from "react";
 import "./styles.css";
+import { IPagination } from "./definitions";
 
 export const Pagination: React.FC<IPagination> = ({
   pageSetter,
@@ -71,10 +72,3 @@ export const Pagination: React.FC<IPagination> = ({
     </div>
   );
 };
-
-interface IPagination {
-  page: number;
-  pageSetter: React.Dispatch<React.SetStateAction<number>>;
-  isPreviousData?: boolean;
-  numberOfPages?: number;
-}

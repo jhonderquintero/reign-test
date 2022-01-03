@@ -1,4 +1,5 @@
-import React, { MouseEventHandler } from "react";
+import React from "react";
+import { ICard } from "./definitions";
 import "./styles.css";
 
 export const Card: React.FC<ICard> = ({
@@ -36,12 +37,3 @@ export const Card: React.FC<ICard> = ({
     </div>
   );
 };
-
-export interface ICard {
-  headerText: string;
-  centralText: string;
-  headerIcon?: JSX.Element;
-  rightIcon?: JSX.Element;
-  clickHandler?: MouseEventHandler;
-  url?: string;
-}
