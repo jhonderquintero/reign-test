@@ -7,6 +7,7 @@ import { InfoCard } from "../InfoCard/InfoCard";
 import { useSearchParams } from "react-router-dom";
 import "./styles.css";
 import { Pagination } from "../Pagination/Pagination";
+import formatDistance from "date-fns/formatDistance";
 
 export const SelectedCards = reactQueryHOC(
   ({ favoritePosts, setFavoritePosts, selectedDropdown, queryClient }: any) => {
@@ -48,23 +49,24 @@ export const SelectedCards = reactQueryHOC(
                   story_title,
                   story_url,
                   created_at,
-                  comment_text,
                   story_id,
+                  author,
                 }: any) => {
-                  if (
-                    !story_title ||
-                    !story_url ||
-                    !created_at ||
-                    !comment_text
-                  ) {
+                  if (!story_title || !story_url || !created_at || !author) {
                     return null;
                   } else {
+                    const time = formatDistance(
+                      new Date(Date.parse(created_at)),
+                      new Date(),
+                      { addSuffix: true }
+                    );
+
                     return (
                       <InfoCard
                         createdAt={created_at}
                         prevLocalStorageState={favoritePosts}
-                        headerText={story_title}
-                        centralText={comment_text}
+                        headerText={`${time.replace("about", "")} by ${author}`}
+                        centralText={story_title}
                         headerIcon={<TimeSVG />}
                         storyUrl={story_url}
                         localStorageSetter={setFavoritePosts}

@@ -69,6 +69,7 @@ export const InfoCard: React.FC<IInfoCard> = ({
       centralText={centralText}
       headerText={headerText}
       key={createdAt}
+      url={storyUrl}
     />
   );
 };

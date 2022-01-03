@@ -12,23 +12,26 @@ export const HomeFavoritesCards = () => {
 
   return (
     <div className="favorite-cards__wrapper">
-      {favoritePosts?.map(({ centralText, headerText, id, createdAt }: any) => {
-        return (
-          <Card
-            headerIcon={<TimeSVG />}
-            rightIcon={<FavoriteIconSelectedSVG />}
-            clickHandler={() => {
-              setFavoritePosts(
-                favoritePosts.filter((post: any) => {
-                  return post.createdAt !== createdAt;
-                })
-              );
-            }}
-            centralText={centralText}
-            headerText={headerText}
-          />
-        );
-      })}
+      {favoritePosts?.map(
+        ({ centralText, headerText, createdAt, storyUrl }: any) => {
+          return (
+            <Card
+              headerIcon={<TimeSVG />}
+              rightIcon={<FavoriteIconSelectedSVG />}
+              clickHandler={() => {
+                setFavoritePosts(
+                  favoritePosts.filter((post: any) => {
+                    return post.createdAt !== createdAt;
+                  })
+                );
+              }}
+              url={storyUrl}
+              centralText={centralText}
+              headerText={headerText}
+            />
+          );
+        }
+      )}
     </div>
   );
 };

@@ -16,7 +16,7 @@ export const Pagination: React.FC<IPagination> = ({
   useEffect(() => {
     if (numberOfPages) {
       for (let index = page; index < numberOfPages; index++) {
-        if (pagesArr.current.length < 10) {
+        if (pagesArr.current.length < 9) {
           pagesArr.current.push(index);
         }
       }
@@ -46,7 +46,7 @@ export const Pagination: React.FC<IPagination> = ({
                 }}
                 style={{
                   backgroundColor: `${actPage === page ? "#1890ff" : "#fff"}`,
-                  color: `${actPage === page ? "#fff" : "black"}`
+                  color: `${actPage === page ? "#fff" : "black"}`,
                 }}
               >
                 {actPage + 1}

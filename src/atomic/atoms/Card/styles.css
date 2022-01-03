@@ -1,47 +1,49 @@
 .card {
   background-color: #fff;
   border-radius: 6px;
-  border: solid 1.9px #979797;
+  border: solid 1px #979797;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  opacity: 0.8;
   width: 100%;
+  height: 100%;
 }
 
 .card__right {
-  background-color: #ececec;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border: none;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   margin: 0;
   text-decoration: none;
   font-family: sans-serif;
   cursor: pointer;
   text-align: center;
-  transition: background 250ms ease-in-out, transform 150ms ease;
   -webkit-appearance: none;
   -moz-appearance: none;
   padding: 0px 12px;
-  opacity: 0.8;
+}
+
+.card:hover .card__left, .card:hover .card__right{
+  opacity: 0.5;
 }
 
 .card__right div {
-  height: 100%;
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .card__left {
-  background-color: #fff;
-  padding: 10px 20px;
+  cursor: pointer;
+  padding: 10px 15px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
 }
 
 .card__left__header {
@@ -70,7 +72,7 @@
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
-  line-height: 1.43;
   letter-spacing: 0.25px;
+  margin-top: 2px;
   color: #6b6b6b;
 }
