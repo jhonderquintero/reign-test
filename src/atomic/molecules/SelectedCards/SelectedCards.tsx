@@ -94,12 +94,6 @@ export const SelectedCards = reactQueryHOC(
                 }
               )}
             </div>
-            <Pagination
-              isPreviousData={isPreviousData}
-              page={page}
-              pageSetter={setPage}
-              numberOfPages={data?.nbPages}
-            />
           </div>
         )}
 
@@ -114,6 +108,12 @@ export const SelectedCards = reactQueryHOC(
             <p>Some error occurs</p>
           </div>
         )}
+        <Pagination
+          isPreviousData={isPreviousData}
+          page={page}
+          pageSetter={setPage}
+          numberOfPages={data?.nbPages}
+        />
       </div>
     );
   }
