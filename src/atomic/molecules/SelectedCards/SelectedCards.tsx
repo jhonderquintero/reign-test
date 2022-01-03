@@ -1,6 +1,6 @@
 import { TimeSVG } from "../../../atomic/atoms/Icons/TimeSVG";
 import { fetchPosts } from "../../../helpers/fetchPosts";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { reactQueryHOC } from "../../../helpers/reactQueryHOC";
 import { InfoCard } from "../InfoCard/InfoCard";
@@ -12,16 +12,30 @@ import formatDistance from "date-fns/formatDistance";
 export const SelectedCards = reactQueryHOC(
   ({ favoritePosts, setFavoritePosts, selectedDropdown, queryClient }: any) => {
     const [page, setPage] = React.useState<number>(0);
+    const [isFetchingFirstTime, setIsFetchingFirstTime] = useState(true);
 
-    const { status, data, isPreviousData } = useQuery(
+    const { status, data, isPreviousData, isFetching } = useQuery(
       ["posts", page],
       () => fetchPosts(page, selectedDropdown),
       { keepPreviousData: true, staleTime: 5000 }
     );
 
     useEffect(() => {
-      console.log(data);
-    }, [data]);
+      if (isFetchingFirstTime) {
+        if (!isFetching) {
+          setIsFetchingFirstTime(false);
+        }
+      }
+    }, [selectedDropdown, isFetching, isFetchingFirstTime]);
+
+    useEffect(() => {
+      setIsFetchingFirstTime(true);
+    }, [selectedDropdown, page]);
+
+    // When change page number, setIsFetchingFirstTime to true
+    useEffect(() => {
+      setIsFetchingFirstTime(true);
+    }, [page]);
 
     const [searchParams, setSearchParams] = useSearchParams();
 
@@ -41,7 +55,7 @@ export const SelectedCards = reactQueryHOC(
 
     return (
       <div style={{ marginTop: 30 }}>
-        {status === "success" && (
+        {!isFetchingFirstTime && (
           <div>
             <div className="card__wrapper">
               {data.hits.map(
@@ -89,7 +103,7 @@ export const SelectedCards = reactQueryHOC(
           </div>
         )}
 
-        {status === "loading" && (
+        {(status === "loading" || isFetchingFirstTime === true) && (
           <div>
             <p>Loading...</p>
           </div>

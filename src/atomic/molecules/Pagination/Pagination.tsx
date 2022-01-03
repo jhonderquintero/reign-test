@@ -40,6 +40,7 @@ export const Pagination: React.FC<IPagination> = ({
         ? pagesArr.current.map((actPage: number) => {
             return (
               <PaginationButton
+                key={actPage}
                 onClick={() => {
                   pageSetter(actPage);
                   console.log(pagesArr.current);

@@ -16,7 +16,7 @@ export const Card: React.FC<ICard> = ({
   };
 
   return (
-    <div className="card animate__animated animate__bounceIn">
+    <div className="card animate__animated animate__bounceIn" >
       <div className="card__left" onClick={handleOpenUrl}>
         <div className="card__left__header">
           <div>{headerIcon}</div>

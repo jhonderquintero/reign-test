@@ -2,6 +2,7 @@ import { Home } from "../views/Home/Home";
 import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { NotFound } from "../views/NotFound/NotFound";
 
 export const RootNavigator: React.FC = (): JSX.Element => {
   const location = useLocation();
@@ -16,6 +17,7 @@ export const RootNavigator: React.FC = (): JSX.Element => {
     <div>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </div>
   );
