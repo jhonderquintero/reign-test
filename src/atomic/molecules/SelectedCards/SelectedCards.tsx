@@ -6,16 +6,21 @@ import { reactQueryHOC } from "../../../helpers/reactQueryHOC";
 import { InfoCard } from "../InfoCard/InfoCard";
 import { useSearchParams } from "react-router-dom";
 import "./styles.css";
+import { Pagination } from "../Pagination/Pagination";
 
 export const SelectedCards = reactQueryHOC(
   ({ favoritePosts, setFavoritePosts, selectedDropdown, queryClient }: any) => {
-    const [page, setPage] = React.useState(0);
+    const [page, setPage] = React.useState<number>(0);
 
     const { status, data, isPreviousData } = useQuery(
       ["posts", page],
       () => fetchPosts(page, selectedDropdown),
       { keepPreviousData: true, staleTime: 5000 }
     );
+
+    useEffect(() => {
+      console.log(data);
+    }, [data]);
 
     const [searchParams, setSearchParams] = useSearchParams();
 
@@ -54,7 +59,6 @@ export const SelectedCards = reactQueryHOC(
                   ) {
                     return null;
                   } else {
-
                     return (
                       <InfoCard
                         createdAt={created_at}
@@ -74,23 +78,12 @@ export const SelectedCards = reactQueryHOC(
                 }
               )}
             </div>
-            <div>
-              <div>Current Page: {page + 1}</div>
-              <button
-                onClick={() => setPage((old) => Math.max(old - 1, 0))}
-                disabled={page === 0}
-              >
-                Previous Page
-              </button>
-              <button
-                onClick={() => {
-                  setPage(page + 1);
-                }}
-                disabled={isPreviousData}
-              >
-                Next Page
-              </button>
-            </div>
+            <Pagination
+              isPreviousData={isPreviousData}
+              page={page}
+              pageSetter={setPage}
+              numberOfPages={data?.nbPages}
+            />
           </div>
         )}
 
