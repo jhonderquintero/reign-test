@@ -6,6 +6,14 @@
   background-image: linear-gradient(to bottom, #ececec -32%, #fff 124%);
 }
 
-.header__left-element{
+@media only screen and (max-width: 480px) {
+  .header {
+    padding-top: 44px;
+    padding-bottom: 42px;
+    padding-left: 80px;
+  }
+}
+
+.header__left-element {
   width: auto;
 }

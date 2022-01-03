@@ -4,3 +4,8 @@
   margin: 20px;
   align-items: center;
 }
+
+.not-found__link {
+  text-decoration: none;
+  color: black;
+}

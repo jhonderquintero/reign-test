@@ -22,7 +22,7 @@ export const Pagination: React.FC<IPagination> = ({
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [numberOfPages]);
 
   return (
     <div className="pagination-wrapper">

@@ -8,6 +8,7 @@ import { useSearchParams } from "react-router-dom";
 import "./styles.css";
 import { Pagination } from "../Pagination/Pagination";
 import formatDistance from "date-fns/formatDistance";
+import { LoadingLottie } from "../../../atomic/atoms/Lotties/Loading";
 
 export const SelectedCards = reactQueryHOC(
   ({ favoritePosts, setFavoritePosts, selectedDropdown, queryClient }: any) => {
@@ -94,19 +95,11 @@ export const SelectedCards = reactQueryHOC(
                 }
               )}
             </div>
-            <Pagination
-              isPreviousData={isPreviousData}
-              page={page}
-              pageSetter={setPage}
-              numberOfPages={data?.nbPages}
-            />
           </div>
         )}
 
         {(status === "loading" || isFetchingFirstTime === true) && (
-          <div>
-            <p>Loading...</p>
-          </div>
+          <LoadingLottie />
         )}
 
         {status === "error" && (
@@ -114,6 +107,13 @@ export const SelectedCards = reactQueryHOC(
             <p>Some error occurs</p>
           </div>
         )}
+
+        <Pagination
+          isPreviousData={isPreviousData}
+          page={page}
+          pageSetter={setPage}
+          numberOfPages={data?.nbPages}
+        />
       </div>
     );
   }
